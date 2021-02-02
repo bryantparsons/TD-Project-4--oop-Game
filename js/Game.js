@@ -34,4 +34,15 @@ getRandomPhrase() {
   return this.phrases[PhraseNum];
 }
 
+/**
+* Begins game by selecting a random phrase and displaying it to user
+*/
+
+startGame() {
+    const startGame = document.getElementById('overlay');
+    startGame.style.display = 'none';
+    this.getRandomPhrase();
+    addPhraseToDisplay(); 
+}
+
 }
