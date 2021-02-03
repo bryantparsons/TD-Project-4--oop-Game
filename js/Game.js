@@ -6,7 +6,7 @@
      constructor(){
          this.missed = 0;
          this.phrases = this.createPhrases();
-         this.activePhrases = 'null';
+         this.activePhrase = 'null';
      }
 
 /**
@@ -41,8 +41,12 @@ getRandomPhrase() {
 startGame() {
     const startGame = document.getElementById('overlay');
     startGame.style.display = 'none';
-    this.getRandomPhrase();
-    addPhraseToDisplay(); 
+    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase.addPhraseToDisplay(); 
+} 
+
+handleInteraction() {
+    
 }
 
 }
