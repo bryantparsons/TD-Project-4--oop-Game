@@ -4,6 +4,7 @@
 const phraseElements = document.getElementById('phrase');
 const qwerty = document.getElementById('qwerty');
 
+
 class Phrase {
     constructor(phrase) {
         this.phrase = phrase.toLowerCase(); 
@@ -36,23 +37,28 @@ class Phrase {
     */
 
     checkLetter(letter) {
-        qwerty.addEventListener('click', (e) => {
-            let letter = e.target;
-            let phraseLetter = this.phrase.split('');
-            for (let i = 0; i < phraseLetter.length; i += 1) {
-                if (this.phrase[i].textContent === letter.textContent) {
-                    return true;           
-                } else {
-                    return false;
-                }
+        
+       if (this.phrase.includes(letter)) {
+         return true;
+       } else {
+         return false;
+       }
+            
+    }
+
+    /**
+    * Displays passed letter on screen after a match is found
+    * @param (string) letter - Letter to display
+    */
+
+    showMatchedLetter(letter) {
+        const phraseLetters = document.getElementsByTagName('li');
+        for (let i = 0; i < phraseLetters.length; i += 1) {
+                if (letter === phraseLetters[i].textContent) {
+                phraseLetters[i].classList = `show ${letter}`;
             }
-        });
+        }
     }
-
-    showMatchedLetter() {
-
-    }
-
 }
 
 
