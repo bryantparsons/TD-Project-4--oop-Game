@@ -51,19 +51,15 @@
 won
 */    
     checkForWin() {
-        let elementArray = [];
-        let liElements = document.getElementsByTagName('li');
-        elementArray.push(liElements);
-        const phraseLetters = elementArray.filter(element => element.className !== "space");
-        for (let i = 0; i < phraseLetters.length; i += 1) {
-            if (phraseLetters.className === "show") {
-            return true;
-        } else {
-            return false;
-        }
+        const hide = document.getElementsByClassName('hide');
+        for (let i = 0; i < hide.length; i += 1)
+            if (hide.length === 0) {
+             return true;
+            } else {
+             return false;
+            }
     }
-     
-    }
+    
     removeLife() {
 
     }
