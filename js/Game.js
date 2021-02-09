@@ -101,11 +101,20 @@ won
     handleInteraction(button) {
         console.log(button);
         button.disabled = true;
-        this.checkLetter(button.textContent);
-        if (this.checkLetter(button.textContent) === false) {
+        this.activePhrase.checkLetter(button.textContent);
+        if (this.activePhrase.checkLetter(button.textContent) === false) {
             button.classList = 'wrong';
             this.removeLife();
-        }
-    }
+        } else {
+            button.classList = 'chosen';
+            this.activePhrase.showMatchedLetter(button.textContent);
+            this.checkForWin();
+            if (this.checkForWin() === true) {
+                this.gameOver();
+            }           
+        }    
+        
+  }
+
 
 }
