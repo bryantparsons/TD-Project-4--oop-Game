@@ -52,7 +52,6 @@ won
 */    
     checkForWin() {
         const hide = document.getElementsByClassName('hide');
-        for (let i = 0; i < hide.length; i += 1)
             if (hide.length === 0) {
              return true;
             } else {
@@ -60,16 +59,47 @@ won
             }
     }
     
-    removeLife() {
+/**
+* Increases the value of the missed property
+* Removes a life from the scoreboard
+* Checks if player has remaining lives and ends game if player is out
+*/
 
+    removeLife() {
+        this.missed += 1;
+        let image = document.querySelector("img[src='images/liveHeart.png']");
+        if (this.missed <= 5) {
+            image.src = 'images/lostHeart.png';
+        }   if (this.missed === 5) {
+            this.gameOver();
+        }
     }
+
+/**
+* Displays game over message
+* @param {boolean} gameWon - Whether or not the user won the game
+*/
 
     gameOver() {
-
+        const overLay = document.getElementById('overlay');
+        overLay.style.display = 'block';
+        const message = document.getElementById("game-over-message");
+        if (this.missed === 5) {
+            message.textContent = "You've lost. Better luck next time!";
+            overLay.classList = 'lose';
+        } else {
+            message.textContent = "You've won!";
+            overLay.classList = 'win';
+        }
     }
 
-    handleInteraction() {
+/**
+* Handles onscreen keyboard button clicks
+* @param (HTMLButtonElement) button - The clicked button element
+*/
 
+    handleInteraction(button) {
+        console.log(button);
     }
 
 }

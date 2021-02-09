@@ -2,7 +2,7 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 const phraseElements = document.getElementById('phrase');
-const qwerty = document.getElementById('qwerty');
+
 
 
 class Phrase {
