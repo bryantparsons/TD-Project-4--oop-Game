@@ -13,6 +13,6 @@ buttonReset.addEventListener('click', (e) => {
 
 qwerty.addEventListener('click', (e) => {
     if (e.target && e.target.matches("button.key")) {
-        game.handleInteraction();
+        game.handleInteraction(e.target);
     }
 });

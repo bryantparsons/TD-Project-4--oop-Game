@@ -100,6 +100,12 @@ won
 
     handleInteraction(button) {
         console.log(button);
+        button.disabled = true;
+        this.checkLetter(button.textContent);
+        if (this.checkLetter(button.textContent) === false) {
+            button.classList = 'wrong';
+            this.removeLife();
+        }
     }
 
 }
