@@ -72,6 +72,7 @@ won
             image.src = 'images/lostHeart.png';
         }   if (this.missed === 5) {
             this.gameOver();
+            this.reset();
         }
     }
 
@@ -99,7 +100,6 @@ won
 */
 
     handleInteraction(button) {
-        console.log(button);
         button.disabled = true;
         this.activePhrase.checkLetter(button.textContent);
         if (this.activePhrase.checkLetter(button.textContent) === false) {
@@ -111,10 +111,36 @@ won
             this.checkForWin();
             if (this.checkForWin() === true) {
                 this.gameOver();
+                this.reset();
             }           
         }    
         
   }
 
+/*  
+resets for a new game after a win or loss
+removes previous phrase letter li
+resets button keys and heart images
+*/
+    reset() {
+        let ul = document.querySelector("#phrase ul");
+        while (ul.hasChildNodes()) {
+            ul.removeChild(ul.firstChild);
+        }
+       
+        let button = document.querySelectorAll("#qwerty button");
+        for (let i = 0; i < button.length; i += 1) {
+            button[i].disabled = false;
+            button[i].classList = 'key';
+        }
+        
+        let image = document.querySelectorAll("img[src='images/lostHeart.png']");
+        for (let i = 0; i < image.length; i += 1) {
+            image[i].src = 'images/liveHeart.png';
+        }
+       
+        this.missed = 0;
+        
+    }
 
 }
